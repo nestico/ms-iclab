@@ -28,13 +28,13 @@ pipeline {
                             sh "mvn clean package -e"
                     }
                     stage("Paso 4: Análisis SonarQube"){
-                        steps {
+                        //steps {
                             withSonarQubeEnv('sonarqube') {
                                 sh "echo 'Calling sonar Service in another docker container!'"
                                 // Run Maven on a Unix agent to execute Sonar.
                                 sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=laboratorioM3-sonar'
                             }
-                        }
+                        //}
                         // post {
                         //     //record the test results and archive the jar file.
                         //     success {
@@ -58,26 +58,26 @@ pipeline {
                         //     }
                         // }
                     }
-                    // stage("Paso 4: Subir Nexus"){
-                    //     nexusPublisher nexusInstanceId: 'nexus',
-                    //     nexusRepositoryId: 'devops-usach-nexus',
-                    //     packages: [
-                    //         [$class: 'MavenPackage',
-                    //             mavenAssetList: [
-                    //                 [classifier: '',
-                    //                 extension: 'jar',
-                    //                 filePath: 'build/libs/DevOpsUsach2020-0.0.1.jar'
-                    //             ]
-                    //         ],
-                    //             mavenCoordinate: [
-                    //                 artifactId: 'DevOpsUsach2020',
-                    //                 groupId: 'com.devopsusach2020',
-                    //                 packaging: 'jar',
-                    //                 version: '0.0.1'
-                    //             ]
-                    //         ]
-                    //     ]
-                    // }
+                    stage("Paso 4: Subir Nexus"){
+                        nexusPublisher nexusInstanceId: 'nexus',
+                        nexusRepositoryId: 'devops-usach-nexus',
+                        packages: [
+                            [$class: 'MavenPackage',
+                                mavenAssetList: [
+                                    [classifier: '',
+                                    extension: 'jar',
+                                    filePath: 'build/libs/LaboratorioM3-0.0.1.jar'
+                                ]
+                            ],
+                                mavenCoordinate: [
+                                    artifactId: 'LaboratorioM3-ID',
+                                    groupId: 'com.laboratorioM3',
+                                    packaging: 'jar',
+                                    version: '0.0.1'
+                                ]
+                            ]
+                        ]
+                    }
                     // stage("Paso 4: Análisis SonarQube"){
                     //     steps {
                     //         withSonarQubeEnv('sonarqube') {
