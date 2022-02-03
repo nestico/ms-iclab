@@ -66,7 +66,7 @@ pipeline {
                                 mavenAssetList: [
                                     [classifier: '',
                                     extension: 'jar',
-                                    filePath: 'build/libs/LaboratorioM3-0.0.1.jar'
+                                    filePath: 'build/LaboratorioM3-ID-0.0.1.jar'
                                 ]
                             ],
                                 mavenCoordinate: [
