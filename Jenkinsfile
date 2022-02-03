@@ -1,5 +1,4 @@
 library 'pipeline'
-
 ejecucion.call()
 
 // pipeline {
