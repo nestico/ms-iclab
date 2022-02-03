@@ -58,7 +58,7 @@ pipeline {
                         //     }
                         // }
                     }
-                    stage("Paso 4: Subir Nexus"){
+                    stage("Paso 5: Subir Nexus"){
                         nexusPublisher nexusInstanceId: 'nexus',
                         nexusRepositoryId: 'devops-usach-nexus',
                         packages: [
