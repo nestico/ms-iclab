@@ -36,7 +36,7 @@ def stagePackage(){
 
 def stageSonar(){
     stage("Paso 4: Análisis SonarQube"){
-        steps {
+        //steps {  //este step hay que comentarlo ya qye acompana al post
             withSonarQubeEnv('sonarqube') {
             sh "echo 'Calling sonar Service in another docker container!'"
             // Run Maven on a Unix agent to execute Sonar.
@@ -46,7 +46,7 @@ def stageSonar(){
             sh "echo ${projectName}"
             sh "mvn clean verify sonar:sonar -Dsonar.projectKey='${projectKey}' -Dsonar.projectName='${projectName}'"
             }
-        }
+        //}  
         // post{
         //     //record the test results and archive the jar file.
         //     success {
